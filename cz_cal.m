@@ -210,16 +210,18 @@ plot(dte(x<=x_ubar),e(x<=x_ubar))
 %surf(xx,aa,ee)
 title('Equity Value per Unit of Capital across State Parameters')
 xlabel('Debt to EBITDA (x/a)')
-ylabel('Productivity (A)')
-zlabel('Equity Value per Unit of Capital (e)')
+%ylabel('Productivity (A)')
+%zlabel('Equity Value per Unit of Capital (e)')
+ylabel('Equity Value per Unit of Capital (e)')
 
 %% Plot investment policy function
 plot(dte(x<=x_ubar),g(x<=x_ubar))
 %surf(xx,aa,gg) 
 title('Net Investment Rate across State Parameters')
 xlabel('Debt to EBITDA (x/a)')
-ylabel('Productivity (A)')
-zlabel('Net Investment Rate')
+%ylabel('Productivity (A)')
+%zlabel('Net Investment Rate')
+ylabel('Net Investment Rate')
 
 %% Plot gross investment policy function
 g_gross = (delta+g+.5*gamma*g.^2);
