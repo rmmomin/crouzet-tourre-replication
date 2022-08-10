@@ -11,11 +11,11 @@ tic
 % Parameters
 r = 0.05; % risk-free rate
 kappa = r; % coupon rate of unsecured debt
-m = 0.10; % debt amortization rate of unsecured debt; important for convexity
+m = 0.10; % debt amortization rate of unsecured debt
 delta = 0.10; % depreciation rate
 Theta = 0.35; % corporate income tax rate
 sigma = 0.31; % volatility of productivity shock
-gamma = 7.16; % curvature of capital adjustment cost: 7.16; with psi > 0 and net_switch = 0, need gamma = (alpha-psi)/(-delta) for nonnegative investment = g + delta
+gamma = 7.16; % curvature of capital adjustment cost: 7.16; with psi > 0
 alpha_k = 0.33; % 1-deadweight losses
 alpha_b = 0.15; % 1-debt haircut
 a_avg = 0.24; % productivity parameter
@@ -93,12 +93,12 @@ for j=1:J
 for n=1:maxit
     E = e;
     % Forward difference for the derivative of e wrt x;
-    Exf(1:I-1) = (E(2:I)-E(1:I-1))/dx; % x changes along 2nd dim
+    Exf(1:I-1) = (E(2:I)-E(1:I-1))/dx; 
     Exf(I) = (E(I)-gamma*(-m)-1)./xmax;
     Exf = reshape(Exf,I,1);
     
     % Backward difference for the derivative of e wrt x:
-    Exb(2:I) = (E(2:I)-E(1:I-1))/dx; % x changes along 2nd dim
+    Exb(2:I) = (E(2:I)-E(1:I-1))/dx; 
     Exb(1,:) = (E(1,:)-gamma*(g_star)-1)./xmin;
     Exb = reshape(Exb,I,1);
     
@@ -157,6 +157,7 @@ for n=1:maxit
     A_tilde = spdiags(beta,0,I,I)+spdiags(xi(2:I),-1,I,I)+spdiags([0;zeta(1:I-1)],1,I,I);
     
     A = A_tilde + C;
+    
     % Check transition matrix conditions
     if max(abs(sum(A,2))) > mattol
         disp('Improper Transition Matrix')
