@@ -17,7 +17,7 @@ Theta = 0.35; % corporate income tax rate
 sigma = 0.31; % volatility of productivity shock
 gamma = 7.16; % curvature of capital adjustment cost: 7.16
 alpha_k = 0.33; % 1-deadweight losses
-alpha_b = 0.15; % 1-debt haircut
+alpha_b = 0.15; % 1-debt haircutf
 a_avg = 0.24; % productivity parameter
 
 % Endogeous state grid (debt to capital)
@@ -99,7 +99,7 @@ for n=1:maxit
     
     % Backward difference for the derivative of e wrt x:
     Exb(2:I) = (E(2:I)-E(1:I-1))/dx; 
-    Exb(1,:) = (E(1,:)-gamma*(g_star)-1)./xmin;
+    Exb(1,:) = (E(1)-gamma*(g_star)-1)./xmin;
     Exb = reshape(Exb,I,1);
     
     I_convex = Exb <= Exf; %indicator whether value function is convex  
