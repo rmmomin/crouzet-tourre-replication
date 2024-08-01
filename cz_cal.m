@@ -204,6 +204,11 @@ dte = x/a_avg;
 
 toc
 
+%% Compute debt issuance policy
+Exxf = (reshape(Exf(2:I),I-1,1)-reshape(Exf(1:I-1),I-1,1))/dx; 
+Exxf(I) = 0;
+Exxf = reshape(Exxf,I,1);
+b_iss = (Theta*kappa)./Exxf;
 
 %% Plot equity value function
 plot(dte(x<=x_ubar),e(x<=x_ubar))
